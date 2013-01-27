@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EKG Runner</title>
+	<style type="text/css">
+		html,body {
+			background-color: #000;
+			color: #3cf3af;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+    #frame{
+      text-align: center;
+      margin-top: 100px;
+    }
+    #canvas{
+      position: absolute;
+      width: 640px;
+      margin-left: -320px;
+      left: 50%;
+      z-index: 0;
+      top: 150px;
+    }
+    .progress{
+      color: #196D4E;
+      display: none;
+      width: 640px;
+      margin-left: -320px;
+      left: 50%;
+      position: absolute;
+      border: 3px solid #3cf3af;
+      height: 43px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 43px;
+    }
+    .progress img{
+      position: absolute;
+      top: 0;
+      left: 0%;
+      display: block;
+      z-index: 2;
+    }
+    .status{
+      display: block;
+      background-color:#3cf3af;
+      height: 43px;
+      top: 0;
+      width: 0%;
+      position: absolute;
+      z-index: 3;
+    }
+    .display{
+      z-index: 5;
+      position: relative;
+    }
+    .maxScore{
+      display: block;
+      background-color: #3cf3af;
+      opacity: .3;
+      height: 43px;
+      top: 0;
+      width: 0%;
+      position: absolute;
+      z-index: 2;
+    }
+    .win, .death, .intro{
+      width: 960px;
+      margin-left: -480px;
+      left: 50%;
+      font-size: 50px;
+      text-align: center;
+      position: absolute;
+      top: 150px;
+      height: 640px;
+      display: none;
+      background-color: rgba(0,0,0,.5);
+      padding-top: 50px;
+      z-index: 1;
+    }
+    .intro{
+      background-color: rgba(0,0,0,.9);
+    }
+    .intro h1{
+      font-size: 50px;
+    }
+    .intro small{
+      font-size: 25px;
+      font-style: italic;
+    }
+    small{
+      font-size: 25px;
+      font-style: italic;
+    }
+
+    .checkpoint1, .checkpoint2{
+      background-color: #3cf3af;
+      position: absolute;
+      height: 100%;
+      width: 5px;
+    }
+    .credits{
+      position: absolute;
+      bottom: 10px;
+      text-align: center;
+      width: 100%;
+    }
+    a{
+      color: white;
+    }
+    a:visited{
+      color: white;
+    }
+	</style>
+
+
+  <script src="libraries/lowLag.js"></script>
+  <script src="libraries/sm2/js/soundmanager2.js"></script>
+  <script src="libraries/jquery.js"></script>
+
+
+
+	<!--<script type="text/javascript" src="lib/impact/impact.js"></script>-->
+  <!--<script type="text/javascript" src="lib/drop.js"></script>-->
+  <script type="text/javascript" src="game.min.js"></script>
+
+
+</head>
+<body>
+	<div id="frame">
+    <div class="intro">
+      <h1>EKG Runner<br><small>Run for your life.... (groan)</small></h1>
+      <small>Left/Right to move, Up/Space to jump</small>
+      <br>
+      <small>Enter to start</small>
+
+    </div>
+    <div class="win">
+      YOU WIN!
+      <br>
+      <br>
+      <small>
+        Total Time Played: <span class="totalTime"></span>
+        <br>
+        Retries: <span class="retries"></span>
+      </small>
+    </div>
+    <div class="death">
+      You Died.
+      <br>
+      <small>press enter to respawn at your last checkpoint</small>
+      <br>
+      <br>
+      <small>
+        Total Time Played: <span class="totalTime"></span>
+        <br>
+        You have retried <span class="retries"></span> times.
+      </small>
+    </div>
+    <div class="progress">
+      <div class="checkpoint1"></div>
+      <div class="checkpoint2"></div>
+      <div class="display"></div>
+      <div class="status"></div>
+      <div class="maxScore"></div>
+      <img src="media/progress.png">
+    </div>
+		<canvas id="canvas"></canvas>
+	</div>
+  <div class="credits">
+    Programmer: <a href="http://ryan-kahn.com" target="_blank">Ryan Kahn</a>, Sound: <a href="http://kevinnotar.com" target="_blank">Kevin Notar</a>, Graphics: <a href="http://creathcarter.com/" target="_blank">Creath Carter</a>
+  </div>
+</body>
+</html>
