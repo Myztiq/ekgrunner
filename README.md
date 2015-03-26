@@ -1,5 +1,8 @@
 # EKG Runner
 
+## Play it!
+http://ekgrunner.ryan-kahn.com/
+
 ## Running
 
 This is a project built on [impactjs](http://impactjs.com/) a paid library,
